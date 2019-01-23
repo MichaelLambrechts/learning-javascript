@@ -1,48 +1,68 @@
 const readlineSync = require("readline-sync");
 let index = 0;
+let total = 0;
+let arrayX = []
+let arrayY = [];
+let arrayW = [];
+let arrayL = [];
 class Rectangle {
-    constructor(x, y, w, l, indx) {
+    constructor(x, y, w, l) {
         this.topLeftXPos = x;
         this.topLeftYPos = y;
         this.width = w;
         this.length = l;
-        this.indx = index;
-        index++;
-        console.log(index);
     }
 
     viewInfo(x, y, w, l) {
-        console.log("x top left position = " + this.x + "\ny top left position = " + this.y + "\nwidth = " + this.w + "\nlenght = " + this.l + "\n---------\n");
+        console.log("x top left position = " + this.x + "\ny top left position = " + this.y + "\nwidth = " + this.w + "\nlength = " + this.l + "\n---------\n");
     }
 
-    addRandomValue(x, y, w, l) {
+    addRandomValue(rectangle) {
         this.x = getRandomInt(100);
         this.y = getRandomInt(100);
         this.w = getRandomInt(10);
         this.l = getRandomInt(10);
+        
+        arrayX[i] = this.x;
+
+        
+        arrayY[i] = this.y;
+
+        
+        arrayW[i] = this.w;
+        console.log(arrayW[i]);
+
+        
+        arrayL[i] = this.l;
+        console.log(arrayL[i]);
+        return arrayX, arrayY, arrayW, arrayL;
     }
 
-    collides(x, y, w, l, index) {
-        /*for (i = 0; i < 1000; i++) {
-            if (rectangle1.x < rectangle2.x + rectangle2.w && rectangle1.x + rectangle1.w > rectangle2.x && rectangle1.y < rectangle2.y + rectangle2.l && rectangle1.l + rectangle1.y > rectangle2.y) {
+}
+
+function collides (arrayX, arrayY, arrayW, arrayL) {
+    for (i = 0; i < 1000; i++) {
+        for (let j = 0; j < 1000; j++) {
+            if (arrayX[i] < arrayX[j] + arrayW[j] && arrayX[i] + arrayW[i] > arrayX[j] && arrayY[i] < arrayY[j] + arrayL[j] && arrayL[i] + arrayY[i] > arrayY[j]) {
 
                 console.log("true");
-                return true;
+                total++;
+                console.log("total = " + total);
+                
             }
             else {
 
                 console.log("false");
-                return false;
+                
             }
-        
-        }*/
+        }
 
-        
-        
     }
 
 
+
 }
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -51,8 +71,10 @@ function getRandomInt(max) {
 
 for (i = 0; i < 1000; i++) {
     let rectangle = new Rectangle(0, 0, 0, 0, 0);
-    rectangle.addRandomValue();
+    rectangle.addRandomValue(rectangle);
     rectangle.viewInfo();
-    rectangle.collides();
-}
 
+}
+collides(arrayX, arrayY, arrayW, arrayL);
+console.log("TOTAL = " + total);
+console.log(arrayX[999] + "$$" + arrayX[998]);
