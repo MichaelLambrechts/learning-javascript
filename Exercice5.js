@@ -1,29 +1,49 @@
+
 const readlineSync = require("readline-sync");
 
 
 //5.1
-let serie = {
-  "name": "black mirror",
-  "year": 2008,
-  "cast": []
-};
+
 
 var num1 = readlineSync.questionInt("How many cast members do you want to add ? ");
+
+/**
+  Ask for a tv serie and return it.
+*/
 function askTvSerie() {
+  let serie = {
+    "name": "black mirror",
+    "year": 2008,
+    "cast": []
+  };
+
   serie.name = readlineSync.question("name : ");
   serie.year = readlineSync.questionInt("year : ");
 
   for (i = 0; i < num1; i++) {
     serie.cast[i] = readlineSync.question("cast [" + i + "]");
   }
+
+  return serie;
 }
+
+
+function askMultipleTvSerie() {
+  let num = new Number(readlineSync.question("how many ?"));
+  let arr = [];
+  for (let i = 0; i < num; i++) {
+    arr.push(askTvSerie());
+  }
+  return arr;
+}
+
 
 function createJson() {
   let serie_in_json = JSON.stringify(serie);
   console.log(serie_in_json);
 }
 
-askTvSerie();
+let serie = askTvSerie();
 createJson();
 console.log("\n\n" + serie.name);
 console.log("\n" + serie.year);

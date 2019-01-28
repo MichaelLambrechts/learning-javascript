@@ -1,5 +1,10 @@
 const readlineSync = require("readline-sync");
 
+
+//1.0
+
+//faire des calculs dictement dans node :)
+
  // 1.1
 let justA_variable = "michael";
 console.log(justA_variable);
